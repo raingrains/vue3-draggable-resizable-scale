@@ -1,5 +1,5 @@
 {
-  "name": "vue3-draggable-resizable",
+  "name": "vue3-draggable-resizable-scale",
   "version": "1.6.0",
   "private": false,
   "description": "[Vue3 Component] 拖拽缩放并具有自动吸附对齐、参考线等功能",
@@ -35,12 +35,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a7650/vue3-draggable-resizable.git"
+    "url": "git+https://github.com/raingrains/vue3-draggable-resizable-scale.git"
   },
   "bugs": {
-    "url": "https://github.com/a7650/vue3-draggable-resizable/issues"
+    "url": "https://github.com/raingrains/vue3-draggable-resizable-scale/issues"
   },
-  "homepage": "https://github.com/a7650/vue3-draggable-resizable",
+  "homepage": "https://github.com/raingrains/vue3-draggable-resizable-scale",
   "keywords": [
     "vue3",
     "component",
