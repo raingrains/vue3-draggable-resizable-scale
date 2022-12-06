@@ -113,10 +113,10 @@ export function initState(props: any, emit: any) {
     setResizingMaxWidth,
     setResizingMinWidth,
     setResizingMinHeight,
-    $setWidth: (val: number) => setWidth(Math.floor(val)),
-    $setHeight: (val: number) => setHeight(Math.floor(val)),
-    $setTop: (val: number) => setTop(Math.floor(val)),
-    $setLeft: (val: number) => setLeft(Math.floor(val)),
+    copySetWidthsetWidth: (val: number) => setWidth(Math.floor(val)),
+    copySetHeight: (val: number) => setHeight(Math.floor(val)),
+    copySetTop: (val: number) => setTop(Math.floor(val)),
+    copySetLeft: (val: number) => setLeft(Math.floor(val)),
 
   }
 }
@@ -152,7 +152,7 @@ export function initLimitSizeAndMethods(
     resizingMinWidth,
     resizingMinHeight
   } = containerProps
-  const { $setWidth, $setHeight, $setTop, $setLeft } = containerProps
+  const { copySetWidthsetWidth, copySetHeight, copySetTop, copySetLeft } = containerProps
   const { parentWidth, parentHeight } = parentSize
   const limitProps = {
     minWidth: computed(() => {
@@ -193,7 +193,7 @@ export function initLimitSizeAndMethods(
       if (props.disabledW) {
         return width.value
       }
-      return $setWidth(
+      return copySetWidthsetWidth(
         Math.min(
           limitProps.maxWidth.value,
           Math.max(limitProps.minWidth.value, val)
@@ -204,7 +204,7 @@ export function initLimitSizeAndMethods(
       if (props.disabledH) {
         return height.value
       }
-      return $setHeight(
+      return copySetHeight(
         Math.min(
           limitProps.maxHeight.value,
           Math.max(limitProps.minHeight.value, val)
@@ -215,7 +215,7 @@ export function initLimitSizeAndMethods(
       if (props.disabledY) {
         return top.value
       }
-      return $setTop(
+      return copySetTop(
         Math.min(
           limitProps.maxTop.value,
           Math.max(limitProps.minTop.value, val)
@@ -226,7 +226,7 @@ export function initLimitSizeAndMethods(
       if (props.disabledX) {
         return left.value
       }
-      return $setLeft(
+      return copySetLeft(
         Math.min(
           limitProps.maxLeft.value,
           Math.max(limitProps.minLeft.value, val)
@@ -449,8 +449,9 @@ export function initResizeHandle(
     let [_pageX, _pageY] = getPosition(e)
     // let deltaX = _pageX - lstPageX
     // let deltaY = _pageY - lstPageY
+
     let deltaX = (_pageX - lstPageX) / parentScaleX.value
-    let deltaY = (_pageX - lstPageY) / parentScaleY.value
+    let deltaY = (_pageY - lstPageY) / parentScaleY.value
     let _deltaX = deltaX
     let _deltaY = deltaY
     if (props.lockAspectRatio) {
