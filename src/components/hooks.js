@@ -1,6 +1,6 @@
 "use strict";
 var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
+    __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -240,9 +240,6 @@ function initDraggableContainer(containerRef, containerProps, limitProps, dragga
     var handleDrag = function (e) {
         e.preventDefault();
         var trigger = triggerKey.value == 'right' ? 3 : 1;
-        console.log("键", triggerKey.value);
-        console.log("对应key", trigger);
-        console.log('按下的键', e);
         if (trigger != e.which) {
             return;
         }
@@ -261,47 +258,47 @@ function initDraggableContainer(containerRef, containerProps, limitProps, dragga
             var matchedLine = {
                 row: widgetSelfLine.row
                     .map(function (i, index) {
-                    var match = null;
-                    Object.values(referenceLineMap.row).forEach(function (referItem) {
-                        if (i >= referItem.min && i <= referItem.max) {
-                            match = referItem.value;
+                        var match = null;
+                        Object.values(referenceLineMap.row).forEach(function (referItem) {
+                            if (i >= referItem.min && i <= referItem.max) {
+                                match = referItem.value;
+                            }
+                        });
+                        if (match !== null) {
+                            if (index === 0) {
+                                newTop = match;
+                            }
+                            else if (index === 1) {
+                                newTop = Math.floor(match - h.value / 2);
+                            }
+                            else if (index === 2) {
+                                newTop = Math.floor(match - h.value);
+                            }
                         }
-                    });
-                    if (match !== null) {
-                        if (index === 0) {
-                            newTop = match;
-                        }
-                        else if (index === 1) {
-                            newTop = Math.floor(match - h.value / 2);
-                        }
-                        else if (index === 2) {
-                            newTop = Math.floor(match - h.value);
-                        }
-                    }
-                    return match;
-                })
+                        return match;
+                    })
                     .filter(function (i) { return i !== null; }),
                 col: widgetSelfLine.col
                     .map(function (i, index) {
-                    var match = null;
-                    Object.values(referenceLineMap.col).forEach(function (referItem) {
-                        if (i >= referItem.min && i <= referItem.max) {
-                            match = referItem.value;
+                        var match = null;
+                        Object.values(referenceLineMap.col).forEach(function (referItem) {
+                            if (i >= referItem.min && i <= referItem.max) {
+                                match = referItem.value;
+                            }
+                        });
+                        if (match !== null) {
+                            if (index === 0) {
+                                newLeft = match;
+                            }
+                            else if (index === 1) {
+                                newLeft = Math.floor(match - w.value / 2);
+                            }
+                            else if (index === 2) {
+                                newLeft = Math.floor(match - w.value);
+                            }
                         }
-                    });
-                    if (match !== null) {
-                        if (index === 0) {
-                            newLeft = match;
-                        }
-                        else if (index === 1) {
-                            newLeft = Math.floor(match - w.value / 2);
-                        }
-                        else if (index === 2) {
-                            newLeft = Math.floor(match - w.value);
-                        }
-                    }
-                    return match;
-                })
+                        return match;
+                    })
                     .filter(function (i) { return i !== null; })
             };
             containerProvider.setMatchedLine(matchedLine);
